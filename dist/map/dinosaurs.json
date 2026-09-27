@@ -1,0 +1,20 @@
+{
+  "dinosaurs": [
+    { "id": "triceratops", "sprite": "triceratops", "silhouette": "triceratops.png", "continent": "north-america", "size": "9 m long", "period": "Late Cretaceous", "diet": "Herbivore", "hip": "Bird-hipped" },
+    { "id": "tyrannosaurus-rex", "sprite": "tyrannosaurus-rex", "silhouette": "tyrannosaurus-rex.png", "continent": "north-america", "size": "12 m long", "period": "Late Cretaceous", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "stegosaurus", "sprite": "stegosaurus", "silhouette": "stegosaurus.png", "continent": "europe", "size": "9 m long", "period": "Late Jurassic", "diet": "Herbivore", "hip": "Bird-hipped" },
+    { "id": "brachiosaurus", "sprite": "brachiosaurus", "silhouette": "brachiosaurus.png", "continent": "north-america", "zoom": 1.38, "size": "22 m long", "period": "Late Jurassic", "diet": "Herbivore", "hip": "Lizard-hipped" },
+    { "id": "velociraptor", "sprite": "velociraptor", "silhouette": "velociraptor.png", "continent": "asia", "size": "2 m long", "period": "Late Cretaceous", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "spinosaurus", "sprite": "spinosaurus", "silhouette": "spinosaurus.png", "continent": "africa", "size": "15 m long", "period": "Late Cretaceous", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "australovenator", "sprite": "australovenator", "silhouette": "australovenator.png", "continent": "australia", "size": "6 m long", "period": "Late Cretaceous", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "cryolophosaurus", "sprite": "cryolophosaurus", "silhouette": "cryolophosaurus.png", "continent": "antarctica", "size": "6.5 m long", "period": "Early Jurassic", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "dilophosaurus", "sprite": "dilophosaurus", "silhouette": "dilophosaurus.png", "spriteSet": "set2", "continent": "north-america", "size": "7 m long", "period": "Early Jurassic", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "ankylosaurus", "sprite": "ankylosaurus", "silhouette": "ankylosaurus.png", "spriteSet": "set2", "continent": "north-america", "size": "7 m long", "period": "Late Cretaceous", "diet": "Herbivore", "hip": "Bird-hipped" },
+    { "id": "diplodocus", "sprite": "diplodocus", "silhouette": "diplodocus.png", "spriteSet": "set2", "continent": "north-america", "size": "24 m long", "period": "Late Jurassic", "diet": "Herbivore", "hip": "Lizard-hipped" },
+    { "id": "iguanodon", "sprite": "iguanodon", "silhouette": "iguanodon.png", "spriteSet": "set2", "continent": "europe", "size": "10 m long", "period": "Early Cretaceous", "diet": "Herbivore", "hip": "Bird-hipped" },
+    { "id": "carnotaurus", "sprite": "carnotaurus", "silhouette": "carnotaurus.png", "spriteSet": "set2", "continent": "south-america", "size": "8 m long", "period": "Late Cretaceous", "diet": "Carnivore", "hip": "Lizard-hipped" },
+    { "id": "therizinosaurus", "sprite": "therizinosaurus", "silhouette": "therizinosaurus.png", "spriteSet": "set2", "continent": "asia", "size": "10 m long", "period": "Late Cretaceous", "diet": "Herbivore", "hip": "Lizard-hipped" },
+    { "id": "kentrosaurus", "sprite": "kentrosaurus", "silhouette": "kentrosaurus.png", "spriteSet": "set2", "continent": "africa", "size": "5 m long", "period": "Late Jurassic", "diet": "Herbivore", "hip": "Bird-hipped" },
+    { "id": "muttaburrasaurus", "sprite": "muttaburrasaurus", "silhouette": "muttaburrasaurus.png", "spriteSet": "set2", "continent": "australia", "size": "8 m long", "period": "Early Cretaceous", "diet": "Herbivore", "hip": "Bird-hipped" }
+  ]
+}

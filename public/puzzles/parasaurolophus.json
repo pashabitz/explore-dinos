@@ -1,0 +1,11 @@
+{
+  "id": "parasaurolophus",
+  "name": "Parasaurolophus",
+  "image": "parasaurolophus.png",
+  "defaultPieceMode": "2x4",
+  "pieceModes": [
+    { "id": "2x4", "columns": 4, "rows": 2, "label": "2 x 4", "emptyTileThreshold": 0.004 },
+    { "id": "3x6", "columns": 6, "rows": 3, "label": "3 x 6", "emptyTileThreshold": 0.004 }
+  ],
+  "completionMessage": "Skeleton assembled. The crest is back where it belongs."
+}

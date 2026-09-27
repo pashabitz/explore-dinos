@@ -1,0 +1,148 @@
+{
+  "image": "dinosaurs-spritesheet-set2.png",
+  "size": {
+    "w": 2048,
+    "h": 1024
+  },
+  "tileSize": 512,
+  "columns": 4,
+  "rows": 2,
+  "frames": {
+    "dilophosaurus": {
+      "name": "Dilophosaurus",
+      "continents": [
+        "North America"
+      ],
+      "file": "dilophosaurus.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "ankylosaurus": {
+      "name": "Ankylosaurus",
+      "continents": [
+        "North America"
+      ],
+      "file": "ankylosaurus.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "diplodocus": {
+      "name": "Diplodocus",
+      "continents": [
+        "North America"
+      ],
+      "file": "diplodocus.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "iguanodon": {
+      "name": "Iguanodon",
+      "continents": [
+        "Europe"
+      ],
+      "file": "iguanodon.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "carnotaurus": {
+      "name": "Carnotaurus",
+      "continents": [
+        "South America"
+      ],
+      "file": "carnotaurus.png",
+      "frame": {
+        "x": 0,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "therizinosaurus": {
+      "name": "Therizinosaurus",
+      "continents": [
+        "Asia"
+      ],
+      "file": "therizinosaurus.png",
+      "frame": {
+        "x": 512,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "kentrosaurus": {
+      "name": "Kentrosaurus",
+      "continents": [
+        "Africa"
+      ],
+      "file": "kentrosaurus.png",
+      "frame": {
+        "x": 1024,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    "muttaburrasaurus": {
+      "name": "Muttaburrasaurus",
+      "continents": [
+        "Australia"
+      ],
+      "file": "muttaburrasaurus.png",
+      "frame": {
+        "x": 1536,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    }
+  }
+}

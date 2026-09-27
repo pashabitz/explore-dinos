@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+:root {
+  color: #17302e;
+  background: #dfe8db;
+  font-family: 'DM Mono', monospace;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #dfe8db; }
+
+button, select { font: inherit; }
+
+button { cursor: pointer; }
+
+.game-shell { width: min(1420px, calc(100% - 48px)); margin: 0 auto; padding: 22px 0 44px; }
+
+.masthead { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #17302e; padding-bottom: 17px; }
+
+.wordmark { color: inherit; font-size: 1.1rem; font-weight: 500; letter-spacing: 0; text-decoration: none; }
+.wordmark span { color: #b04c25; }
+
+.puzzle-picker { display: flex; align-items: center; gap: 10px; font-size: .72rem; text-transform: uppercase; }
+.puzzle-picker select { appearance: none; background: #f5f1e6; border: 1px solid #17302e; border-radius: 0; color: #17302e; cursor: pointer; padding: 8px 28px 8px 10px; }
+
+.game-intro { max-width: 720px; padding: 58px 0 42px; }
+.eyebrow { color: #b04c25; font-size: .68rem; font-weight: 500; letter-spacing: .08em; margin: 0 0 10px; text-transform: uppercase; }
+h1, h2, p { margin-top: 0; }
+h1, h2 { font-family: Fraunces, Georgia, serif; letter-spacing: 0; }
+h1 { font-size: clamp(2.8rem, 6vw, 5.6rem); line-height: .92; margin-bottom: 18px; }
+.game-intro > p:last-child { font-size: .88rem; line-height: 1.7; max-width: 540px; }
+
+.play-area { display: grid; gap: 22px; grid-template-columns: minmax(0, 2.2fr) minmax(290px, .8fr); align-items: start; }
+.board-panel, .tray-panel { border-top: 2px solid #17302e; padding-top: 12px; }
+.board-caption { display: flex; justify-content: space-between; font-size: .7rem; margin-bottom: 9px; text-transform: uppercase; }
+
+.board { --columns: 4; --rows: 2; aspect-ratio: 1900 / 876; background-color: #f5f1e6; background-position: center; background-repeat: no-repeat; background-size: cover; border: 1px solid #17302e; display: grid; grid-template-columns: repeat(var(--columns), 1fr); grid-template-rows: repeat(var(--rows), 1fr); overflow: hidden; }
+.board.has-reference { background-image: linear-gradient(#f5f1e6dd, #f5f1e6dd), var(--plate-image); }
+.target { border: 1px dashed #17302e55; min-width: 0; min-height: 0; position: relative; transition: background-color .16s ease, outline-color .16s ease; }
+.target.is-filled { border-color: transparent; }
+.target.is-empty { background: #17302e08; pointer-events: none; }
+
+.tray-panel { background: #17302e; color: #f5f1e6; min-height: 100%; padding: 14px; }
+.tray-heading { align-items: flex-start; display: flex; justify-content: space-between; }
+.tray-heading h2 { font-size: 1.55rem; line-height: 1; margin-bottom: 22px; }
+.tray-actions { display: flex; gap: 7px; }
+.icon-button { align-items: center; background: transparent; border: 1px solid #f5f1e6; border-radius: 50%; color: #f5f1e6; display: grid; font-size: 1.2rem; height: 34px; padding: 0; place-items: center; width: 34px; }
+.icon-button:hover { background: #b04c25; border-color: #b04c25; }
+.icon-button[aria-pressed="true"] { background: #f5f1e6; color: #17302e; }
+.mode-button { background: transparent; border: 1px solid #f5f1e6; border-radius: 0; color: #f5f1e6; font-size: .67rem; height: 34px; padding: 0 8px; }
+.mode-button:hover { background: #b04c25; border-color: #b04c25; }
+.tray { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 200px; }
+.tray.is-dense { gap: 6px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.piece { cursor: grab; display: block; height: auto; max-width: 100%; touch-action: none; user-select: none; width: 100%; }
+.piece:hover { filter: drop-shadow(0 5px 0 #b04c25); transform: translateY(-2px); }
+.piece.is-dragging { opacity: .25; }
+.piece.is-placed { cursor: default; filter: none; height: 100%; object-fit: fill; transform: none; width: 100%; }
+.drag-layer { inset: 0; pointer-events: none; position: fixed; z-index: 10; }
+.drag-piece { cursor: grabbing; filter: drop-shadow(0 12px 10px #17302e77); left: 0; position: fixed; top: 0; transform-origin: center; z-index: 11; }
+body.is-dragging { cursor: grabbing; overflow: hidden; }
+.status { border-top: 1px solid #f5f1e655; font-size: .74rem; line-height: 1.7; margin: 18px 0 0; padding-top: 14px; }
+
+.completion-dialog { background: #f5f1e6; border: 2px solid #17302e; box-shadow: 10px 10px 0 #b04c25; color: #17302e; max-width: 420px; padding: 30px; }
+.completion-dialog::backdrop { background: #17302eb8; }
+.completion-dialog h2 { font-size: 2.3rem; line-height: .98; margin-bottom: 14px; }
+.completion-dialog p:not(.eyebrow) { font-size: .82rem; line-height: 1.7; }
+.primary-button { background: #b04c25; border: 1px solid #b04c25; color: #fff; padding: 11px 15px; }
+.primary-button:hover { background: #17302e; border-color: #17302e; }
+.error-state { padding: 48px; }
+
+.activity-home, .map-game-shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 22px 0 60px; }
+.home-label { font-size: .68rem; margin: 0; text-transform: uppercase; }
+.home-intro, .map-intro { max-width: 760px; padding: 68px 0 44px; }
+.map-intro { padding: 24px 0 16px; }
+.home-intro > p:last-child, .map-intro > p:last-child { font-size: .88rem; line-height: 1.7; max-width: 580px; }
+.map-intro > p:last-child { max-width: none; white-space: nowrap; }
+.activity-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.activity-card { border: 2px solid #17302e; color: #17302e; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; min-height: 300px; padding: 22px; position: relative; text-decoration: none; transition: background-color .16s ease, color .16s ease, transform .16s ease; }
+.activity-card:hover { background: #17302e; color: #f5f1e6; transform: translateY(-4px); }
+.activity-card-assemble { background: #f5f1e6; }
+.activity-card-map { background: #afc9bc; }
+.activity-number { align-self: start; font-size: .72rem; }
+.activity-card div { align-self: end; }
+.activity-card h2 { font-size: clamp(2rem, 3.7vw, 3.2rem); line-height: .95; margin-bottom: 14px; }
+.activity-card p:last-child { font-size: .76rem; line-height: 1.65; margin-bottom: 0; max-width: 300px; }
+.activity-arrow { align-self: end; font-family: Fraunces, Georgia, serif; font-size: 2.7rem; line-height: .7; }
+.back-link { border-bottom: 1px solid currentColor; color: inherit; font-size: .72rem; padding-bottom: 3px; text-decoration: none; text-transform: uppercase; }
+.back-link:hover { color: #b04c25; }
+
+.map-workspace { display: grid; gap: 22px; grid-template-columns: minmax(0, 2.2fr) minmax(260px, .8fr); align-items: start; }
+.map-board-panel, .specimen-panel { border-top: 2px solid #17302e; padding-top: 12px; }
+.world-map { aspect-ratio: 1.85 / 1; background: #5899a0; border: 1px solid #17302e; box-shadow: 5px 5px 0 #b04c25; overflow: hidden; position: relative; }
+.world-map svg { display: block; height: 100%; width: 100%; }
+.dino-details { align-items: stretch; border: 1px solid #17302e; border-left: 5px solid #b04c25; display: grid; grid-template-columns: minmax(156px, .64fr) minmax(0, 1fr) minmax(150px, .56fr); margin-top: 18px; overflow: hidden; }
+.dino-details-image-frame { background: #afc9bc; border-right: 1px solid #17302e; display: block; height: 146px; overflow: hidden; }
+.dino-details-image-frame img { display: block; height: 100%; object-fit: contain; transform: scale(1.75); transform-origin: 50% 66%; width: 100%; }
+.dino-details-facts { padding: 12px 15px; }
+.dino-details .eyebrow { color: #b04c25; margin: 0 0 4px; }
+.dino-details h2 { font-size: 1.45rem; line-height: 1; margin: 0 0 10px; }
+.dino-details dl { display: grid; gap: 9px 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+.dino-details dt { color: #17302e99; font-family: 'DM Mono', monospace; font-size: .57rem; text-transform: uppercase; }
+.dino-details dd { color: #17302e; font-family: Fraunces, Georgia, serif; font-size: .9rem; margin: 2px 0 0; }
+.dino-size-comparison { background: #f5f1e6; border-left: 1px solid #17302e; display: grid; grid-template-rows: auto 1fr auto; margin: 0; min-height: 170px; overflow: hidden; padding: 12px 11px 8px; }
+.dino-size-comparison .eyebrow { margin: 0 0 2px; }
+.dino-size-comparison img { display: block; height: 128px; justify-self: center; max-width: 100%; object-fit: contain; transform: scale(1.3); transform-origin: 50% 68%; width: 100%; }
+.dino-size-comparison figcaption { color: #17302e99; font-family: 'DM Mono', monospace; font-size: .55rem; margin-top: 2px; text-align: center; text-transform: uppercase; }
+.map-ocean { fill: url(#ocean-wash); }
+.map-ocean-texture { fill: url(#ocean-dashes); }
+.map-graticule { fill: none; stroke: #f5f1e633; stroke-width: 1; }
+.map-land { fill: #bfd0ba; stroke: #17302e; stroke-linejoin: round; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.map-land-texture { fill: url(#land-hatch); pointer-events: none; }
+.map-compass circle { fill: #f5f1e6dc; stroke: #17302e; stroke-width: 1.5; }
+.map-compass path { fill: #b04c25; stroke: #17302e; stroke-width: 1; }
+.map-compass path + path { fill: none; }
+.map-compass text { fill: #17302e; font-family: 'DM Mono', monospace; font-size: 12px; text-anchor: middle; }
+.continent-highlight { fill: transparent; pointer-events: none; stroke: transparent; stroke-linejoin: round; stroke-width: 2.4; transition: fill 140ms ease, stroke 140ms ease; vector-effect: non-scaling-stroke; }
+.continent-highlight.is-hovered { fill: #f1cc5b66; stroke: #f5f1e6aa; }
+.continent-highlight.is-success { animation: continent-success 700ms ease-out; }
+@keyframes continent-success { 0% { fill: #f5f1e6; stroke: #f5f1e6; } 45% { fill: #f1cc5bb3; stroke: #f0bd3fcc; } 100% { fill: transparent; stroke: transparent; } }
+.map-zone { display: block; position: absolute; z-index: 2; }
+.map-zone.is-filled { clip-path: none; z-index: 4; }
+.zone-north-america { clip-path: polygon(30% 0, 75% 5%, 100% 28%, 76% 66%, 63% 100%, 29% 77%, 0 37%); height: 44%; left: 10%; top: 11%; width: 31%; }
+.zone-south-america { clip-path: polygon(20% 0, 75% 9%, 100% 39%, 76% 100%, 38% 89%, 7% 47%); height: 43%; left: 25%; top: 48%; width: 20%; }
+.zone-europe { clip-path: none; height: 24%; left: 44%; top: 13%; width: 16%; }
+.zone-africa { clip-path: polygon(20% 0, 81% 7%, 100% 43%, 64% 100%, 26% 93%, 0 39%); height: 42%; left: 43%; top: 38%; width: 19%; }
+.zone-asia { clip-path: polygon(0 15%, 45% 0, 100% 16%, 93% 64%, 62% 92%, 16% 66%); height: 42%; left: 58%; top: 17%; width: 34%; }
+.zone-australia { clip-path: polygon(18% 15%, 80% 0, 100% 39%, 74% 100%, 17% 86%, 0 43%); height: 21%; left: 75%; top: 64%; width: 20%; }
+.zone-antarctica { clip-path: polygon(0 38%, 19% 0, 82% 0, 100% 43%, 80% 100%, 20% 89%); bottom: 0; height: 17%; left: 18%; width: 65%; }
+.continent-label { align-items: center; background: #f5f1e6eb; border: 1px solid #17302e; color: #17302e; display: flex; font-size: clamp(.48rem, .9vw, .65rem); gap: 4px; line-height: 1; padding: 5px 6px; pointer-events: none; position: absolute; text-transform: uppercase; transform: translate(-50%, -50%); z-index: 3; }
+.continent-label i { background: #b04c25; border: 1px solid #17302e; border-radius: 50%; display: block; height: 7px; width: 7px; }
+.label-north-america { left: 22%; top: 34%; }
+.label-south-america { left: 32%; top: 64%; }
+.label-europe { left: 52%; top: 9%; }
+.label-africa { left: 53%; top: 53%; }
+.label-asia { left: 68%; top: 37%; }
+.label-australia { left: 82%; top: 69%; }
+.label-antarctica { left: 52%; top: 86%; }
+.placed-dinosaur { height: 78px; left: 50%; position: absolute; top: 57%; transform: translate(calc(-1 * var(--anchor-x) * 100% + var(--placement-x)), calc(-1 * var(--anchor-y) * 100% + var(--placement-y))) rotate(-5deg); width: 78px; z-index: 1; }
+.zone-europe .placed-dinosaur { height: 96px; width: 96px; }
+.placed-dino-sprite { display: block; height: 100%; overflow: hidden; position: relative; width: 100%; }
+.placed-dino-sprite img { height: 200%; left: 0; max-width: none; position: absolute; top: 0; width: 400%; }
+.specimen-panel { background: #17302e; color: #f5f1e6; min-height: 330px; padding: 18px; }
+.map-tray-heading { align-items: flex-start; display: flex; gap: 10px; justify-content: space-between; }
+.map-tray-heading h2 { font-size: 1.65rem; line-height: .97; margin: 0 0 18px; }
+.map-tray { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dinosaur-card { align-items: center; background: #f5f1e6; border: 1px solid #f5f1e6; color: #17302e; display: grid; font-family: 'DM Mono', monospace; font-size: .58rem; gap: 1px; grid-template-columns: 1fr; justify-items: center; min-height: 96px; padding: 4px 3px; text-align: center; touch-action: none; }
+.dinosaur-card:hover { background: #afc9bc; border-color: #afc9bc; transform: translateY(-2px); }
+.dinosaur-card.is-placed { background: #c4c7bf; border-color: #c4c7bf; color: #17302eaa; cursor: pointer; filter: grayscale(.85); opacity: .58; }
+.dinosaur-card.is-placed:hover { background: #c4c7bf; border-color: #c4c7bf; transform: none; }
+.dino-icon-frame { display: block; height: 72px; overflow: hidden; width: 100%; }
+.dino-icon { display: block; height: 100%; object-fit: contain; transform: scale(var(--dino-zoom)); transform-origin: 50% 66%; width: 100%; }
+.dinosaur-card.is-dragging { opacity: .2; }
+.drag-dinosaur-card { background: transparent; border-color: transparent; cursor: grabbing; filter: drop-shadow(0 10px 8px #17302e77); left: 0; position: fixed; top: 0; z-index: 11; }
+.map-progress { border-top: 1px solid #f5f1e655; font-size: .7rem; margin: 16px 0 0; padding-top: 12px; }
+.specimen-panel .status { margin-top: 9px; }
+
+@media (max-width: 760px) {
+  .game-shell { width: min(calc(100% - 28px), 620px); padding-top: 15px; }
+  .activity-home, .map-game-shell { width: min(calc(100% - 28px), 620px); padding-top: 15px; }
+  .masthead { align-items: flex-start; gap: 12px; }
+  .puzzle-picker { align-items: flex-end; flex-direction: column; gap: 5px; }
+  .game-intro { padding: 42px 0 30px; }
+  .home-intro, .map-intro { padding: 46px 0 32px; }
+  .map-intro { padding: 24px 0 16px; }
+  .map-intro > p:last-child { white-space: normal; }
+  .play-area { grid-template-columns: 1fr; }
+  .activity-grid, .map-workspace { grid-template-columns: 1fr; }
+  .activity-card { min-height: 230px; }
+  .world-map { aspect-ratio: 1.35 / 1; }
+  .continent-label { font-size: .46rem; padding: 4px; }
+  .specimen-panel { min-height: 0; }
+  .dino-details { grid-template-columns: minmax(104px, .6fr) minmax(0, 1fr); }
+  .dino-details-image-frame { height: 138px; }
+  .dino-details-facts { padding: 11px 12px; }
+  .dino-details h2 { font-size: 1.2rem; }
+  .dino-size-comparison { border-left: 0; border-top: 1px solid #17302e; grid-column: 1 / -1; grid-template-columns: auto 1fr auto; grid-template-rows: 1fr; min-height: 0; padding: 7px 12px; }
+  .dino-size-comparison .eyebrow { align-self: center; margin: 0; }
+  .dino-size-comparison img { height: 66px; transform: scale(1.15); }
+  .dino-size-comparison figcaption { align-self: center; margin: 0; }
+  .map-tray { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .dinosaur-card { min-height: 88px; }
+  .dino-icon-frame { height: 64px; }
+  .tray { grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: 0; }
+  .tray.is-dense { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .tray-heading h2 { margin-bottom: 16px; }
+}
