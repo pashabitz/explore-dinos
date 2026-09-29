@@ -209,7 +209,6 @@ function renderShell() {
             <span class="continent-label label-australia"><i></i>Australia</span>
             <span class="continent-label label-antarctica"><i></i>Antarctica</span>
           </div>
-          <section id="dino-details" class="dino-details" aria-live="polite" hidden></section>
         </div>
         <aside class="specimen-panel" aria-label="Dinosaur specimen tray">
           <div class="map-tray-heading">
@@ -220,6 +219,7 @@ function renderShell() {
           <p id="map-progress" class="map-progress">0 / 0 placed</p>
           <p id="map-status" class="status" aria-live="polite">Drag a specimen onto the continent where it was found.</p>
         </aside>
+        <section id="dino-details" class="dino-details" aria-live="polite" hidden></section>
       </section>
     </main>
     <div id="map-drag-layer" class="drag-layer" aria-hidden="true"></div>

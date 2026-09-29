@@ -93,7 +93,7 @@ body.is-dragging { cursor: grabbing; overflow: hidden; }
 .map-board-panel, .specimen-panel { border-top: 2px solid #17302e; padding-top: 12px; }
 .world-map { aspect-ratio: 1.85 / 1; background: #5899a0; border: 1px solid #17302e; box-shadow: 5px 5px 0 #b04c25; overflow: hidden; position: relative; }
 .world-map svg { display: block; height: 100%; width: 100%; }
-.dino-details { align-items: stretch; border: 1px solid #17302e; border-left: 5px solid #b04c25; display: grid; grid-template-columns: minmax(156px, .64fr) minmax(0, 1fr) minmax(150px, .56fr); margin-top: 18px; overflow: hidden; }
+.dino-details { align-items: stretch; border: 1px solid #17302e; border-left: 5px solid #b04c25; display: grid; grid-column: 1; grid-template-columns: minmax(156px, .64fr) minmax(0, 1fr) minmax(150px, .56fr); margin-top: 0; overflow: hidden; }
 .dino-details-image-frame { background: #afc9bc; border-right: 1px solid #17302e; display: block; height: 146px; overflow: hidden; }
 .dino-details-image-frame img { display: block; height: 100%; object-fit: contain; transform: scale(1.75); transform-origin: 50% 66%; width: 100%; }
 .dino-details-facts { padding: 12px 15px; }
